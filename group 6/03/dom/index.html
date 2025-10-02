@@ -16,6 +16,12 @@
             display: block;
             padding: 15px;
         }
+        table {
+            border-collapse: separate;
+        }
+        table, td, th  {
+            border: 1px solid black;
+        }
 
     </style>
 </head>
@@ -82,7 +88,7 @@
     </div>
 
     <!-- Task 6: Update Table -->
-    <div id="task6" class="task current">
+    <div id="task6" class="task">
         <h3>Task 6: Update Table</h3>
         <p>There is a table with three columns! Above the table, there are three text input fields and a button. Clicking the button should insert the values from the three input fields as a new row in the table. You can find the base list for the table in the script.</p>
         <input type="text" id="input1" placeholder="Value 1">
@@ -119,12 +125,17 @@
         </select>
         <button>List</button>
         <table id="booksByPublisher">
+            <thead>
             <tr>
                 <th>Author</th>
                 <th>Title</th>
                 <th>Publication Year</th>
                 <th>ISBN</th>
             </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
         </table>
     </div>
 
@@ -139,7 +150,7 @@
         <button id="dec">-</button>
     </div>
 
-    <div id="task10" class="task">
+    <div id="task10" class="task current">
         <h3>Task 10: Guess the Number</h3>
         <p>The computer is thinking of a number! Our task is to guess it. Provide the ability to guess the number, and the computer will respond whether its number is smaller or larger than our guess. Use the Math.random() function for generating a random number and Math.floor() for rounding!</p>
         <label for="guess">Guess:</label>

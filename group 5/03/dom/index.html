@@ -16,6 +16,12 @@
             display: block;
             padding: 15px;
         }
+        table,td,th{
+            border: 1px solid black !important;
+        }
+        table {
+            border-collapse: separate;
+        }
 
     </style>
 </head>
@@ -82,7 +88,7 @@
     </div>
 
     <!-- Task 6: Update Table -->
-    <div id="task6" class="task current">
+    <div id="task6" class="task">
         <h3>Task 6: Update Table</h3>
         <p>There is a table with three columns! Above the table, there are three text input fields and a button. Clicking the button should insert the values from the three input fields as a new row in the table. You can find the base list for the table in the script.</p>
         <input type="text" id="input1" placeholder="Value 1">
@@ -99,7 +105,7 @@
         </table>
     </div>
 
-    <div id="task7" class="task">
+    <div id="task7" class="task ">
         <h3>Task 7: List Books by Year</h3>
         <p>Input a year and list book titles published in that year! You can find the list of books for this task in the script!</p>
         <label for="year">Enter the year:</label>
@@ -108,7 +114,7 @@
         <ul id="booksByYear"></ul>
     </div>
 
-    <div id="task8" class="task">
+    <div id="task8" class="task current">
         <h3>Task 8: Books by Publisher</h3>
         <p>Create a dropdown menu listing different publishers. Clicking a button should display books associated with the selected publisher in a tabular format!</p>
         <label for="publisher">Select a publisher:</label>
@@ -119,12 +125,17 @@
         </select>
         <button>List</button>
         <table id="booksByPublisher">
-            <tr>
-                <th>Author</th>
-                <th>Title</th>
-                <th>Publication Year</th>
-                <th>ISBN</th>
-            </tr>
+            <thead>
+                <tr>
+                    <th>Author</th>
+                    <th>Title</th>
+                    <th>Publication Year</th>
+                    <th>ISBN</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+            </tbody>
         </table>
     </div>
 

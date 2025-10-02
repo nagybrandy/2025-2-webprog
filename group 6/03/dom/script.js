@@ -76,6 +76,20 @@ button6.addEventListener('click',
                 inputs[2].value)
         )
 
+
+const cells = document.querySelectorAll('#task6 td')
+const table6 = document.querySelector('#task6 table')
+
+table6.addEventListener('click', (e)=> {
+    if(!e.target.matches("td")) return;
+        
+    if(e.shiftKey) {
+        e.target.parentElement.style.backgroundColor = "red"
+    } else {
+        e.target.style.backgroundColor = e.altKey ? "unset" : "blue"
+    } 
+})
+
 // Task 7
 const booksList = [
     {
@@ -102,7 +116,7 @@ const booksList = [
     {
         author: "F. Scott Fitzgerald",
         title: "The Great Gatsby",
-        publicationYear: 1925,
+        publicationYear: 1869,
         publisher: "Charles Scribner's Sons",
         isbn: "978-0743273565"
     },
@@ -112,14 +126,76 @@ const booksList = [
         publicationYear: 1869,
         publisher: "The Russian Messenger",
         isbn: "No ISBN"
+    },
+    {
+        author: "Leo Tolstoy",
+        title: "Piece and Wore",
+        publicationYear: 1869,
+        publisher: "The Russian Messenger",
+        isbn: "No ISBN"
+    }, 
+    {
+        author: "Leo Tolstoy",
+        title: "Peace and Raw",
+        publicationYear: 1869,
+        publisher: "The Russian Messenger",
+        isbn: "No ISBN"
     }
 ];
 
-// Task 8
+const input7 = document.querySelector('#task7 input')
+const button7 = document.querySelector('#task7 button')
+const ul7 = document.querySelector('#task7 ul')
 
+button7.addEventListener('click', ()=> {
+    const filteredList = booksList.filter(e => e.publicationYear === parseInt(input7.value))
+    ul7.innerHTML = filteredList.map(e=> `<li>${e.title}</li>`).join("")
+})
+// Task 8
+const publishers = new Set(booksList.map(e=> e.publisher))
+
+const select = document.querySelector('#task8 select')
+const table8 = document.querySelector('#task8 table')
+
+select.innerHTML = [...publishers].map(e=> `<option>${e}</option>`).join("")
+
+select.addEventListener('input', ()=> {
+    table8.children[1].innerHTML = booksList.filter(e => e.publisher === select.value).map(e => `
+                        <tr>
+                            <td>${e.author}</td>
+                            <td>${e.title}</td>
+                            <td>${e.publicationYear}</td>
+                            <td>${e.isbn}</td>
+                        </tr>
+                    `).join("")
+})
 // Task 9
 
 // Task 10
+const input10 = document.querySelector('#task10 input')
+const button10 = document.querySelector('#task10 button')
+const guessList = []
+
+const randomNumber = Math.floor(Math.random() * 100)
+console.log(randomNumber)
+
+button10.addEventListener('click', ()=> {
+    const guessNumber = parseInt(input10.value)
+    if(randomNumber === guessNumber) {
+        alert("We got it!!!")
+    } else if(randomNumber > guessNumber) {
+        const li = document.createElement('li')
+        li.innerHTML = `Guessed number: ${guessNumber} - the original is higher`
+        document.querySelector('#guessList').append(li)
+    } else {
+        const li = document.createElement('li')
+        li.innerHTML = `Guessed number: ${guessNumber} - the original is lower`
+        document.querySelector('#guessList').append(li)
+    }
+})
+
+
+
 
 document.querySelectorAll("ul#menu li a").forEach(function(link) {
     link.addEventListener("click", function(e) {

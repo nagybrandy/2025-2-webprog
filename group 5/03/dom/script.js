@@ -76,6 +76,22 @@ button6.addEventListener('click',
                 inputs[2].value)
         )
 
+const cells = document.querySelectorAll('td')
+const table = document.querySelector('#task6 table')
+
+table.addEventListener('click', (event)=> {
+    event.preventDefault()
+    if(event.target.matches("td")) {
+        if(event.altKey) {
+            event.target.parentElement.style.backgroundColor = "red"
+        } else {
+            event.target.style.backgroundColor = !event.shiftKey ? "blue" : "unset !important"
+        }
+    }
+})
+
+console.log(cells)
+
 // Task 7
 const booksList = [
     {
@@ -102,7 +118,7 @@ const booksList = [
     {
         author: "F. Scott Fitzgerald",
         title: "The Great Gatsby",
-        publicationYear: 1925,
+        publicationYear: 1869,
         publisher: "Charles Scribner's Sons",
         isbn: "978-0743273565"
     },
@@ -112,13 +128,69 @@ const booksList = [
         publicationYear: 1869,
         publisher: "The Russian Messenger",
         isbn: "No ISBN"
+    },
+    {
+        author: "Jane Austen",
+        title: "Pride and Prejudice",
+        publicationYear: 1813,
+        publisher: "T. Egerton, Whitehall",
+        isbn: "978-0141439518"
+    },
+    {
+        author: "Charles Dickens",
+        title: "A Tale of Two Cities",
+        publicationYear: 1859,
+        publisher: "T. Egerton, Whitehall",
+        isbn: "978-0141439518"
     }
 ];
 
+const input7 = document.querySelector('#task7 input')
+const button7 = document.querySelector('#task7 button')
+const ul7 = document.querySelector('#task7 ul')
+
+button7.addEventListener('click', ()=> {
+    ul7.innerHTML = ""
+    const value = parseInt(input7.value)
+    const filteredList = booksList.filter(book => book.publicationYear === value)
+
+    ul7.innerHTML += filteredList
+                        .map(
+                            book => `<li>${book.author} -  ${book.title} - ${book.publicationYear}</li>`
+                        ).join("")
+})
+
 // Task 8
+const select8 = document.querySelector('#task8 select')
+const button8 = document.querySelector('#task8 button')
+const table8 = document.querySelector('#task8 table')
+
+const publishers = new Set(booksList.map(e => e.publisher))
+
+select8.innerHTML = ""
+publishers.forEach(e => {
+    select8.innerHTML += `<option>${e}</option>`
+})
+
+select8.addEventListener('input', (e)=> {
+    table8.children[1].innerHTML = ""
+    console.log(select8.value)
+    const filteredBooks = booksList.filter(e => e.publisher === select8.value)
+    filteredBooks.forEach(book => {
+        table8.children[1].innerHTML += `
+        <tr>
+            <td>${book.author}</td>
+            <td>${book.title}</td>
+            <td>${book.publicationYear}</td>
+            <td>${book.isbn}</td>
+        </tr>
+        `
+    })
+})
+
+
 
 // Task 9
-
 // Task 10
 
 document.querySelectorAll("ul#menu li a").forEach(function(link) {
